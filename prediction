@@ -1,0 +1,20 @@
+#input_data = (198.38300,215.20300,193.10400,0.00212,0.00001,0.00113,0.00135,0.00339,0.01263,0.11100,0.00640,0.00825,0.00951,0.01919,0.00119,30.77500,0.465946,0.738703,-7.067931,0.175181,1.512275,0.096320)
+input_data = (177.87600,192.92100,168.01300,0.00411,0.00002,0.00233,0.00241,0.00700,0.02126,0.18900,0.01154,0.01347,0.01612,0.03463,0.00586,23.21600,0.360148,0.778834,-6.149653,0.218037,2.477082,0.165827)
+# changing input data to a numpy array
+input_data_as_numpy_array = np.asarray(input_data)
+
+# reshape the numpy array
+input_data_reshaped = input_data_as_numpy_array.reshape(1,-1)
+
+# standardize the data
+std_data = scaler.transform(input_data_reshaped)
+
+prediction = model.predict(std_data)
+print(prediction)
+
+
+if (prediction[0] == 0):
+  print("The Person does not have Parkinsons Disease")
+
+else:
+  print("The Person has Parkinsons")
